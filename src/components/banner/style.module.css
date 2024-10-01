@@ -1,0 +1,14 @@
+ .divBanner {
+     background-image: url("../../assets/banner_img/banner.png");
+     background-size: cover;
+     background-position: center;
+     height: 600px;
+
+     width: 100%;
+ }
+
+ .h1_Banner {
+     font-size: 96px;
+     color: white;
+     margin-left: 40px;
+ }

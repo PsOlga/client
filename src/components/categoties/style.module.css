@@ -1,0 +1,22 @@
+.header_categories_home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Чтобы выровнять элементы по вертикали */
+}
+
+.h1_div {
+    flex-grow: 1;
+    /* Если нужно, чтобы заголовок занял больше места */
+    margin-left: 40px;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(40, 40, 40, 1);
+    margin-right: 32px;
+
+}
+
+.linie {
+    border: 2px solid rgba(221, 221, 221, 1);
+    width: 90%;
+}
