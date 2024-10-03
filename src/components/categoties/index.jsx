@@ -19,8 +19,8 @@ function CategorieHome() {
   return (
     <div className={styles.container}>
       <div className={styles.header_categories_home}>
-        <div className={styles.h1_div}>
-          <h1 className={styles.h1_categories_home}>Categories</h1>
+        <div className={styles.h2_div}>
+          <h2 className={styles.h2_categories_home}>Categories</h2>
         </div>
         <div className={styles.linie}></div>
         <div className={styles.btn_div}>
@@ -34,6 +34,12 @@ function CategorieHome() {
                 size: "16px",
                 padding: "8px 16px",
                 whiteSpace: "nowrap",
+                "@media (max-width: 768px)": {
+                marginRight: "20px",
+              },
+              "@media (max-width: 576px)": {
+                marginRight: "10px",
+              },
               }}
               variant="outlined"
               href="#outlined-buttons"
@@ -43,7 +49,7 @@ function CategorieHome() {
           </Link>
         </div>
       </div>
-<div className={styles.productCardContainer}>
+<div className={styles.categories_Card_Container}>
 
         {randomCategories.map((product) => (
           <div key={product?.id} 
@@ -53,10 +59,10 @@ function CategorieHome() {
               src={`http://localhost:3333${product?.image}`}  
               alt={product?.title} 
               className={styles.categories_image} 
-              style={{ width: "150px", height: "150px" }}
             />
             {/* Отображение заголовка */}
-            <h3  className={styles.categories_h3} >{product?.title}</h3>
+            <h3  className={styles.categories_card_h3} 
+            >{product?.title}</h3>
           </div>
         ))}
       </div>
