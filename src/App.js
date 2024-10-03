@@ -1,29 +1,30 @@
 
-import { Route, Routes } from 'react-router-dom';
 
-
+import { useDispatch } from 'react-redux';
+import { getCategories } from './store/actionCreators.js';
+import RoutesMain from './routes/routesMain.js';
 import Header from './header/index.jsx';
 import Footer from './footer/index.jsx';
 import './App.css';
-import HomePage from './pages/HomePage';
-import CategoriesAll from './pages/CategotiesAll/index.jsx';
+import { useEffect } from 'react';
+import { getProducts } from './store/actionCreators.js';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProducts())
+    dispatch(getCategories())
+  }, [dispatch]);
+
+
   return (
   
 
       <div className="App">
         <Header/>
-      
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/pages/HomePage" element={<HomePage />} />
-          <Route path="/pages/CategoriesAll" element={<CategoriesAll />} />
-          {/* <Route path="/cart" element={} /> */}
-        </Routes>
-
-
+          <RoutesMain/>
         <Footer/>
+
       </div>
 
  

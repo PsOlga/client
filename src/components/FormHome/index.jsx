@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./style.module.css";
-import { Input } from "@mui/material";
+import imgDogs from "../../assets/form/Dogs.png";
 
 function FormHome() {
   const {
@@ -46,8 +46,22 @@ function FormHome() {
 
   return (
     <div className={styles.div_dinamic_form}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.dinamic_Form}>
-        <Input
+
+       
+        <h1 className={styles.h1_Form}>5% off on the first order</h1>
+    
+        <div className={styles.dogs_and_form}>
+         <div className={styles.div_img_dogs}>
+             <img 
+             className={styles.img_dogs}
+             src={imgDogs} 
+             alt="imgDogs" />
+            </div>
+       <form 
+       onSubmit={handleSubmit(onSubmit)} 
+       className={styles.dinamic_Form}>
+      
+        <input className={styles.inputForm}
           {...register("Name", {
             required: {
               value: true,
@@ -70,8 +84,8 @@ function FormHome() {
         {/* Сообщения об ошибках для поля "Name" */}
         {errors.Name && <p className={styles.error_message}>{errors.Name.message}</p>}
 
-        <Input
-          {...register("phoneNumber", { // Измените имя на phoneNumber
+        <input className={styles.inputForm}
+          {...register("phoneNumber", { 
             required: {
               value: true,
               message: "Это поле обязательно для заполнения",
@@ -82,15 +96,15 @@ function FormHome() {
             },
           })}
           type="text"
-          id="phoneNumber" // Измените id на phoneNumber
+          id="phoneNumber" 
           placeholder="Phone number"
-          className={styles.input_pas}
+         
         />
         {/* Сообщения об ошибках для поля "Phone number" */}
         {errors.phoneNumber && <p className={styles.error_message}>{errors.phoneNumber.message}</p>}
 
-        <Input
-          {...register("Email", { // Не забудьте зарегистрировать Password
+        <input className={styles.inputForm}
+          {...register("Email", { 
             required: {
               value: true,
               message: "Это поле обязательно для заполнения",
@@ -99,13 +113,14 @@ function FormHome() {
           type="email"
           id="Email"
           placeholder="Email"
-          className={styles.input_email}
+         
         />
-        {/* Сообщения об ошибках для поля "Email" */}
-        {errors.Email && <p className={styles.error_message_pas}>{errors.Email.message}</p>}
+        {/* Сообщения об ошибках для поля "Email"
+        {errors.Email && <p className={styles.error_message_pas}>{errors.Email.message}</p>} */}
 
-        <button type="submit" className={styles.btn_dinamic_form}>Submit</button>
+        <button type="submit" className={styles.btn_form}>Get Discount</button>
       </form>
+        </div>
     </div>
   );
 }

@@ -1,22 +1,49 @@
-.header_categories_home {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Чтобы выровнять элементы по вертикали */
-}
+ .header_categories_home {
+     width: 100%;
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     margin-bottom: 20px;
+     margin-right: 40px;
+     margin-left: 40px;
+     padding: 0;
+ }
 
-.h1_div {
-    flex-grow: 1;
-    /* Если нужно, чтобы заголовок занял больше места */
-    margin-left: 40px;
-    font-size: 36px;
-    font-weight: 700;
-    color: rgba(40, 40, 40, 1);
-    margin-right: 32px;
+ .h1_div {
+     font-family: 'Montserrat', sans-serif;
+     font-size: 64px;
+     margin: 40px 10px;
+ }
 
-}
+ .linie {
+     border: 2px solid rgba(221, 221, 221, 1);
+     width: 70vw;
+ }
 
-.linie {
-    border: 2px solid rgba(221, 221, 221, 1);
-    width: 90%;
-}
+ .productCardContainer {
+     display: grid;
+     grid-template-columns: repeat(4, minmax(150px, 1fr));
+     gap: 16px;
+     width: 100%;
+ }
+
+ .categoriesCard {
+     max-width: 100%;
+     height: auto;
+     border-radius: 12px;
+     margin-left: 40px;
+ }
+
+ .categories_image {
+     width: 100%;
+     height: auto;
+ }
+
+ .categories_h3 {
+     margin-top: 10px;
+     font-size: 16px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     font-family: 'Montserrat', sans-serif;
+ }

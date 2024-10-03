@@ -1,59 +1,69 @@
+
+
 import { Button, Link } from "@mui/material";
 import styles from "./style.module.css";
-import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
+function CategorieHome() {
+  const { categories } = useSelector((state) => state.categories);
+  
+  // Функция для получения случайных товаров
+  const getRandomProducts = (products, num) => {
+    const shuffled = [...products].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  };
 
-function CategorieHome (){
+  // Получаем 4 случайных товара
+  const randomCategories = categories?.length > 0 ? getRandomProducts(categories, 4) : [];
 
-    const [categoriesProducts, setCategoriesProducts] = useState([]);
-
-    useEffect(() => {
-        fetch('/api/products')
-          .then(response => response.json())
-          .then(data => setCategoriesProducts(data));
-      }, []);
-
-
-
-    return (
-      <div className={styles.container}>
-        <div className={styles.header_categories_home}>
-            <div className={styles.h1_div}>
-                <h1 className={styles.h1_categories_home}>Categories</h1>
-            </div>
-            
-            <div className={styles.linie}></div>
-            <div className={styles.btn_div}>
-                <Link do="/pages/CategoriesAll">
-                <Button 
-                className={styles.btn_categories_home}
-                sx={{
-                    color: 'rgba(139, 139, 139, 1)',
-                    border: '1px solid rgba(139, 139, 139, 1)',
-                    marginRight: '40px',
-                    size: '16px',
-                    padding: '8px 16px',
-                    whiteSpace: 'nowrap',
-                  }}
-                  variant="outlined"
-                  href="#outlined-buttons"
-                > All categories </Button>
-                </Link>
-            </div>
+  return (
+    <div className={styles.container}>
+      <div className={styles.header_categories_home}>
+        <div className={styles.h1_div}>
+          <h1 className={styles.h1_categories_home}>Categories</h1>
         </div>
-
-        <div>
-        {categoriesProducts.map(product => (
-        <div key={product.id}>
-          <h3>{product.name}</h3>
+        <div className={styles.linie}></div>
+        <div className={styles.btn_div}>
+          <Link do="/pages/CategoriesAll">
+            <Button
+              className={styles.btn_categories_home}
+              sx={{
+                color: "rgba(139, 139, 139, 1)",
+                border: "1px solid rgba(139, 139, 139, 1)",
+                marginRight: "40px",
+                size: "16px",
+                padding: "8px 16px",
+                whiteSpace: "nowrap",
+              }}
+              variant="outlined"
+              href="#outlined-buttons"
+            >
+              All categories
+            </Button>
+          </Link>
         </div>
-      ))}
-    </div> 
+      </div>
+<div className={styles.productCardContainer}>
 
-        </div>
-
-
-    )
+        {randomCategories.map((product) => (
+          <div key={product?.id} 
+          className={styles.categories_Card}>
+            {/* Отображение картинки */}
+            <img 
+              src={`http://localhost:3333${product?.image}`}  
+              alt={product?.title} 
+              className={styles.categories_image} 
+              style={{ width: "150px", height: "150px" }}
+            />
+            {/* Отображение заголовка */}
+            <h3  className={styles.categories_h3} >{product?.title}</h3>
+          </div>
+        ))}
+      </div>
+</div>
+      
+ 
+  );
 }
 
 export default CategorieHome;
